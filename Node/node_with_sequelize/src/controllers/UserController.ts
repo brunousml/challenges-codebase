@@ -1,16 +1,17 @@
 import User  from '../models/User'
-import {Request, Response} from "express";
+import { Request, Response } from "express";
+import IController from "./IController";
 
-interface IUserController {
-    store(req: Request, res: Response): Promise<object>
-}
 
-const UserController:IUserController  =  {
-    async store(req: Request, res: Response): Promise<object> {
-        const {name, email} = req.body
+const UserController:IController  =  {
+    async list(req: Request, res: Response): Promise<object> {
+        const users: User[] = await User.findAll()
+        return res.json(users)
+    },
 
-        const user = await User.create({name, email})
-        return res.json(user)
+    async create(req: Request, res: Response): Promise<object> {
+        const user = await User.create(req.body)
+        return res.status(201).json(user)
     }
 }
 
