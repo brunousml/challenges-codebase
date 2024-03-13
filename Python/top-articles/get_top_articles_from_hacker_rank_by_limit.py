@@ -71,7 +71,7 @@ def top_articles(size):
 
 
 if __name__ == '__main__':
-    fptr = open('/Users/brunousml/projects/hackerHankTests/output/file.txt', 'w')
+    fptr = open('/output/file.txt', 'w')
     limit = 2
     print(f'Limit was set to {limit}')
 
