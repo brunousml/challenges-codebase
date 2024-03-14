@@ -1,13 +1,13 @@
-import User  from '../models/User'
-import { Request, Response } from "express";
-import IController from "./IController";
-import Address from "../models/Address";
+import { Request, Response } from "express"
+import IController from "./IController"
 
+const Address = require('../models/Address')
+const User = require('../models/User')
 
 const AddressController:IController  =  {
     async list(req: Request, res: Response): Promise<object> {
-        const users: Address[] = await Address.findAll()
-        return res.json(users)
+        const addresses = await Address.findAll({include: {association: 'user'}})
+        return res.json(addresses)
     },
 
     async create(req: Request, res: Response): Promise<object> {

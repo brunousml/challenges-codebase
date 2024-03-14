@@ -1,11 +1,12 @@
-import User  from '../models/User'
 import { Request, Response } from "express";
 import IController from "./IController";
+
+const User = require('../models/User');
 
 
 const UserController:IController  =  {
     async list(req: Request, res: Response): Promise<object> {
-        const users: User[] = await User.findAll()
+        const users = await User.findAll({include: {association: 'addresses'}})
         return res.json(users)
     },
 
