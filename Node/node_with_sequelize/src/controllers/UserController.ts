@@ -5,8 +5,16 @@ const User = require('../models/User');
 
 
 const UserController:IController  =  {
+    async delete(req: Request, res: Response): Promise<object> {
+        return res.json();
+    },
+
+    async update(req: Request, res: Response): Promise<object> {
+        return res.json();
+    },
+
     async list(req: Request, res: Response): Promise<object> {
-        const users = await User.findAll({include: {association: 'addresses'}})
+        const users = await User.findAll({include: {association: 'techs', }})
         return res.json(users)
     },
 

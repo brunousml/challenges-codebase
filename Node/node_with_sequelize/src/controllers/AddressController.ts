@@ -5,6 +5,14 @@ const Address = require('../models/Address')
 const User = require('../models/User')
 
 const AddressController:IController  =  {
+    async delete(req: Request, res: Response): Promise<object> {
+        return res.json();
+    },
+
+    async update(req: Request, res: Response): Promise<object> {
+        return res.json();
+    },
+
     async list(req: Request, res: Response): Promise<object> {
         const addresses = await Address.findAll({include: {association: 'user'}})
         return res.json(addresses)
