@@ -1,5 +1,5 @@
-import {IFarmerRepository} from "../../repositories/IFarmerRepository";
-import {FarmerEntity} from "../../entities/FarmerEntity";
+import {IFarmerRepository} from "../../../repositories/IFarmerRepository";
+import {AddressEntity} from "../../../entities/FarmerEntity";
 
 export class DeleteFarmerUseCase {
     constructor(

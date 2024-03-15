@@ -1,16 +1,16 @@
 import {Request, Response } from "express"
-import {DeleteFarmerUseCase} from "./DeleteFarmerUseCase";
+import {UpdateFarmerUseCase} from "./UpdateFarmerUseCase";
 
-export class DeleteFarmerController {
+export class UpdateFarmerController {
     constructor(
-        private deleteFarmerUseCase: DeleteFarmerUseCase
+        private updateFarmerUseCase: UpdateFarmerUseCase
     ) {}
 
     async handle(request: Request, response: Response): Promise<Response> {
         try {
             const {farmer_id } = request.params
-            const farmer = await this.deleteFarmerUseCase.execute(farmer_id)
-            return response.status(204).send()
+            const farmer = await this.updateFarmerUseCase.execute(farmer_id, request.body)
+            return response.status(201).send(farmer)
         } catch (error: any) {
             const errorResponse = {
                 success: false,
