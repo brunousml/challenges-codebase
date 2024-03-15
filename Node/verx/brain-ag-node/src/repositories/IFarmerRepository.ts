@@ -1,7 +1,7 @@
-import {FarmerEntity} from "../entities/FarmerEntity";
+import {AddressEntity} from "../entities/FarmerEntity";
 
 export interface IFarmerRepository {
-    insert(farmer: FarmerEntity): Promise<FarmerEntity>
-    update(id:string, farmer: FarmerEntity): Promise<FarmerEntity>
+    insert(farmer: AddressEntity): Promise<AddressEntity>
+    update(id:string, farmer: AddressEntity): Promise<AddressEntity>
     delete(id:string): Promise<void>
 }

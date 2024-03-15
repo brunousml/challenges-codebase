@@ -1,16 +1,16 @@
 import {Request, Response } from "express"
-import {UpdateFarmerUseCase} from "./UpdateFarmerUseCase";
+import {UpdateAddressUseCase} from "./UpdateAddressUseCase";
 
-export class UpdateFarmerController {
+export class UpdateAddressController {
     constructor(
-        private updateFarmerUseCase: UpdateFarmerUseCase
+        private updateAddressUseCase: UpdateAddressUseCase
     ) {}
 
     async handle(request: Request, response: Response): Promise<Response> {
         try {
-            const {farmer_id } = request.params
-            const farmer = await this.updateFarmerUseCase.execute(farmer_id, request.body)
-            return response.status(201).send(farmer)
+            const {address_id } = request.params
+            const address = await this.updateAddressUseCase.execute(address_id, request.body)
+            return response.status(201).send(address)
         } catch (error: any) {
             const errorResponse = {
                 success: false,
