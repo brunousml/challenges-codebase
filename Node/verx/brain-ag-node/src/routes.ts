@@ -7,6 +7,10 @@ import {AddressController} from "./controllers/AddressController";
 import {createAddressController} from "./useCases/AddressesUseCases/CreateAddress";
 import {updateAddressController} from "./useCases/AddressesUseCases/UpdateAddress";
 import {deleteAddressController} from "./useCases/AddressesUseCases/DeleteAddress";
+import {FarmController} from "./controllers/FarmController";
+import {deleteFarmController} from "./useCases/FarmsUseCases/DeleteFarm";
+import {createFarmController} from "./useCases/FarmsUseCases/CreateFarm";
+import {updateFarmController} from "./useCases/FarmsUseCases/UpdateFarm";
 
 const router = Router()
 
@@ -34,6 +38,20 @@ router.patch('/addresses/:address_id', (request, response) =>{
 })
 router.delete('/addresses/:address_id', (request, response) =>{
     return deleteAddressController.handle(request, response)
+})
+
+// farms routes
+router.get('/farms/', (request, response) =>{
+    return FarmController.list(request, response)
+})
+router.post('/farms', (request, response) =>{
+    return createFarmController.handle(request, response)
+})
+router.patch('/farms/:farms_id', (request, response) =>{
+    return updateFarmController.handle(request, response)
+})
+router.delete('/farms/:farms_id', (request, response) =>{
+    return deleteFarmController.handle(request, response)
 })
 
 export { router }
